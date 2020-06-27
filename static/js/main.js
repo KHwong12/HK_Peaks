@@ -41,6 +41,7 @@ require([
     ground: "world-elevation"
   });
 
+  // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-ElevationLayer.html
   var elevLyr = new ElevationLayer({
   // Custom elevation service
     url: "https://tiles.arcgis.com/tiles/6j1KwZfY2fZrfNMR/arcgis/rest/services/HK_DTM/ImageServer"
