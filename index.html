@@ -4,70 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Peaks of Hong Kong</title>
-  <style>
-    html,
-    body,
-    #viewDiv {
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-    }
-
-    #paneDiv {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      padding: 12px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      width: 200px;
-    }
-
-    #queryDiv {
-      min-width: 250px;
-      font-size: 14px;
-      padding: 10px;
-      display: none;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-
-    .geometry-options {
-      display: flex;
-      flex-direction: row;
-    }
-    .geometry-button {
-      flex: 1;
-      border-style: solid;
-      border-width: 1px;
-      border-image: none;
-    }
-    .geometry-button-selected {
-      background: #4c4c4c;
-      color: #fff;
-    }
-
-    #bufferNum {
-      width: 90%;
-      margin: 2.5em auto 0;
-    }
-
-    .count {
-      white-space: nowrap;
-      font-size: 14px;
-      font-weight: bold;
-      display: inline-block;
-    }
-  </style>
 
   <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/css/main.css">
+
+  <!-- app's own css -->
+  <link rel="stylesheet" href="static/css/main.css">
 
   <script src="https://js.arcgis.com/4.15/"></script>
 
   <!-- app's own JavaScript -->
   <script src="static/js/main.js"></script>
-
 </head>
 
 <body>
@@ -76,19 +22,10 @@
     Click on map to check the observable area (viewshed) from the Peaks
   </div>
   <div id="queryDiv" class="esri-widget">
-    <b>Query by geometry</b><br />
-    <br />Draw a geometry to query by:
-    <div class="geometry-options">
-      <button
-        class="esri-widget--button esri-icon-map-pin geometry-button"
-        id="point-geometry-button"
-        value="point"
-        title="Query by point"
-      ></button>
-    </div>
+    <b>Settings</b><br />
     <br />
     <div class="tooltip">
-      <label for="bufferNum">Set a geometry buffer size:</label>
+      <label for="bufferNum">Visible Range (aka Buffer Distance):</label>
       <div id="bufferNum"></div>
     </div>
     <br />

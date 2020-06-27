@@ -54,8 +54,8 @@ require([
     map: map,
     camera: {
       // autocasts as new Camera()
-      position: [114.20, 22.25, 3000],
-      tilt: 75
+      position: [114.16, 22.24, 5000],
+      tilt: 60
     }
   });
 
@@ -121,41 +121,15 @@ require([
 
   view.ui.add([queryDiv], "bottom-left");
 
-  // use SketchViewModel to draw polygons that are used as a query
-  let sketchGeometry = null;
-  const sketchViewModel = new SketchViewModel({
-    layer: sketchLayer,
-    defaultUpdateOptions: {
-      tool: "reshape",
-      toggleToolOnClick: false
-    },
-    view: view,
-    defaultCreateOptions: { hasZ: false }
-  });
-
-  sketchViewModel.on("create", function(event) {
-    if (event.state === "complete") {
-      sketchGeometry = event.graphic.geometry;
-      runQuery();
-    }
-  });
-
-  sketchViewModel.on("update", function(event) {
-    if (event.state === "complete") {
-      sketchGeometry = event.graphics[0].geometry;
-      runQuery();
-    }
-  });
-
   // draw geometry buttons - use the selected geometry to sktech
-  document
-    .getElementById("point-geometry-button")
-    .addEventListener("click", geometryButtonsClickHandler);
-  function geometryButtonsClickHandler(event) {
-    const geometryType = event.target.value;
-    clearGeometry();
-    sketchViewModel.create(geometryType);
-  }
+  // document
+  //   .getElementById("point-geometry-button")
+  //   .addEventListener("click", geometryButtonsClickHandler);
+  // function geometryButtonsClickHandler(event) {
+  //   const geometryType = event.target.value;
+  //   clearGeometry();
+  //   sketchViewModel.create(geometryType);
+  // }
 
   const bufferNumSlider = new Slider({
     container: "bufferNum",
@@ -172,16 +146,16 @@ require([
     values: [5]
   });
 
-  // Default buffer size
-  bufferSize = bufferNumSlider.values[0]
+  // Set default buffer size
+  bufferSize = bufferNumSlider.values[0];
 
-  // get user entered values for buffer
+  // Get user entered values for buffer
   bufferNumSlider.on(
     ["thumb-change", "thumb-drag"],
     bufferVariablesChanged
   );
   function bufferVariablesChanged (event) {
-    bufferSize = event.value
+    bufferSize = event.value;
   }
   // Clear the geometry and set the default renderer
   document
@@ -190,13 +164,7 @@ require([
 
   // Clear the geometry and set the default renderer
   function clearGeometry() {
-    sketchGeometry = null;
-    sketchViewModel.cancel();
-    sketchLayer.removeAll();
-    bufferLayer.removeAll();
-    clearHighlighting();
-    clearCharts();
-    resultDiv.style.display = "none";
+    graphicsLayer.removeAll();
   }
 
 
@@ -209,15 +177,15 @@ require([
     type: "point-3d", // autocasts as new PointSymbol3D()
     symbolLayers: [{
       type: "object",  // autocasts as new ObjectSymbol3DLayer()
-      width: 100,    // diameter of the object from east to west in meters
-      height: 100,  // height of object in meters
-      depth: 100,   // diameter of the object from north to south in meters
+      width: 150,    // diameter of the object from east to west in meters
+      height: 150,  // height of object in meters
+      depth: 150,   // diameter of the object from north to south in meters
       resource: { primitive: "sphere" },
-      material: { color: [231, 70, 60, 0.8] }
+      material: { color: [255, 0, 0, 0.9] }
     }],
     verticalOffset: {
       screenLength: 40,
-      minWorldLength: 100
+      minWorldLength: 150
     },
     callout: {
       type: "line",  // autocasts as new LineCallout3D()
@@ -231,10 +199,11 @@ require([
 
   var fillSymbol = {
     type: "simple-fill", // autocasts as new SimpleFillSymbol()
-    color: [226, 119, 40, 0.75],
+    // color: [226, 119, 40, 0.75],
+    color: [255, 255, 251, 0.6],
     outline: {
       // autocasts as new SimpleLineSymbol()
-      color: "#ffffff",
+      color: [255, 255, 255],
       width: 0.5
     }
   };
