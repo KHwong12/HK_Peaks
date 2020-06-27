@@ -30,12 +30,12 @@ require([
     ground: "world-elevation"
   });
 
-  // var elevLyr = new ElevationLayer({
-  // // Custom elevation service
-  //   url: "https://tiles.arcgis.com/tiles/6j1KwZfY2fZrfNMR/arcgis/rest/services/HK_DTM/ImageServer"
-  // });
-  // // Add elevation layer to the map's ground.
-  // map.ground.layers.add(elevLyr);
+  var elevLyr = new ElevationLayer({
+  // Custom elevation service
+    url: "https://tiles.arcgis.com/tiles/6j1KwZfY2fZrfNMR/arcgis/rest/services/HK_DTM/ImageServer"
+  });
+  // Add elevation layer to the map's ground.
+  map.ground.layers.add(elevLyr);
 
   var view = new SceneView({
     container: "viewDiv",
