@@ -14,7 +14,7 @@ require([
   "esri/widgets/Slider",
   "esri/geometry/geometryEngine",
   "esri/core/promiseUtils"
-], function (
+], function(
   Map,
   SceneView,
   ElevationLayer,
@@ -43,7 +43,7 @@ require([
 
   // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-ElevationLayer.html
   var elevLyr = new ElevationLayer({
-  // Custom elevation service
+    // Custom elevation service
     url: "https://tiles.arcgis.com/tiles/6j1KwZfY2fZrfNMR/arcgis/rest/services/HK_DTM/ImageServer"
   });
   // Add elevation layer to the map's ground.
@@ -55,7 +55,8 @@ require([
     camera: {
       // autocasts as new Camera()
       position: [114.175, 22.223, 5000],
-      tilt: 60
+      tilt: 60,
+      heading: 15
     }
   });
 
@@ -72,29 +73,26 @@ require([
     // autocasts as new PopupTemplate()
     title: "{NAME}",
     lastEditInfoEnabled: true,
-    content: [
-      {
-        type: "fields",
-        fieldInfos: [
-          {
-            fieldName: "name",
-            label: "Chinese Name"
-          },
-          {
-            fieldName: "name_en",
-            label: "English Name"
-          },
-          {
-            fieldName: "ele",
-            label: "Elevation (m)",
-            format: {
-              places: 0,
-              digitSeparator: true
-            }
+    content: [{
+      type: "fields",
+      fieldInfos: [{
+          fieldName: "name",
+          label: "Chinese Name"
+        },
+        {
+          fieldName: "name_en",
+          label: "English Name"
+        },
+        {
+          fieldName: "ele",
+          label: "Elevation (m)",
+          format: {
+            places: 0,
+            digitSeparator: true
           }
-        ]
-      }
-    ]
+        }
+      ]
+    }]
   };
 
 
@@ -102,38 +100,39 @@ require([
     url: "https://services5.arcgis.com/xH8UmTNerx1qYfXM/arcgis/rest/services/peak_3D/FeatureServer/0",
     popupTemplate: popupTemplate,
     labelingInfo: [{
-    labelPlacement: "above-center",
-    labelExpressionInfo: {
-      expression: "$feature.NAME",
-    },
-    symbol: {
-      type: "label-3d",
-      symbolLayers: [{
-        type: "text",
-        material: {
-          color: [86, 72, 31]
-        },
-        halo: {
-          color: [244, 239, 227, 0.6],
-          size: "3px"
-        },
-        font: {
-          weight: "bold"
-        },
-        size: 10
-      }],
-      verticalOffset: {
-        screenLength: 50,
-        maxWorldLength: 500,
-        minWorldLength: 20
+      labelPlacement: "above-center",
+      // https://community.esri.com/thread/187776-arcade-text-constant-for-textformattingnewline-is-adding-space-instead-of-new-line
+      labelExpressionInfo: {
+        expression: "$feature.NAME + TextFormatting.NewLine + $feature.ELE + 'm'"
       },
-      callout: {
-        type: "line",
-        size: "2px",
-        color: [86, 72, 31]
+      symbol: {
+        type: "label-3d",
+        symbolLayers: [{
+          type: "text",
+          material: {
+            color: [86, 72, 31]
+          },
+          halo: {
+            color: [244, 239, 227, 0.6],
+            size: "3px"
+          },
+          font: {
+            weight: "bold"
+          },
+          size: 10
+        }],
+        verticalOffset: {
+          screenLength: 50,
+          maxWorldLength: 500,
+          minWorldLength: 20
+        },
+        callout: {
+          type: "line",
+          size: "2px",
+          color: [86, 72, 31]
+        }
       }
-    }
-  }]
+    }]
 
   });
 
@@ -189,7 +188,8 @@ require([
     ["thumb-change", "thumb-drag"],
     bufferVariablesChanged
   );
-  function bufferVariablesChanged (event) {
+
+  function bufferVariablesChanged(event) {
     bufferSize = event.value;
   }
   // Clear the geometry and set the default renderer
@@ -212,19 +212,23 @@ require([
   var markerSymbol = {
     type: "point-3d", // autocasts as new PointSymbol3D()
     symbolLayers: [{
-      type: "object",  // autocasts as new ObjectSymbol3DLayer()
-      width: 150,    // diameter of the object from east to west in meters
-      height: 150,  // height of object in meters
-      depth: 150,   // diameter of the object from north to south in meters
-      resource: { primitive: "sphere" },
-      material: { color: [255, 0, 0, 0.9] }
+      type: "object", // autocasts as new ObjectSymbol3DLayer()
+      width: 150, // diameter of the object from east to west in meters
+      height: 150, // height of object in meters
+      depth: 150, // diameter of the object from north to south in meters
+      resource: {
+        primitive: "sphere"
+      },
+      material: {
+        color: [255, 0, 0, 0.9]
+      }
     }],
     verticalOffset: {
       screenLength: 40,
       minWorldLength: 150
     },
     callout: {
-      type: "line",  // autocasts as new LineCallout3D()
+      type: "line", // autocasts as new LineCallout3D()
       size: 1.5,
       color: [150, 150, 150, 0.8],
       border: {
@@ -248,7 +252,7 @@ require([
 
   gp.outSpatialReference = {
     // autocasts as new SpatialReference()
-    wkid: 102100
+    wkid: 4326
   };
 
   view.on("click", computeViewshed);
@@ -297,7 +301,7 @@ require([
     var resultFeatures = result.results[0].value.features;
 
     // Assign each resulting graphic a symbol
-    var viewshedGraphics = resultFeatures.map(function (feature) {
+    var viewshedGraphics = resultFeatures.map(function(feature) {
       feature.symbol = fillSymbol;
       return feature;
     });
@@ -324,4 +328,35 @@ require([
         }
       });
   }
+
+  // Bookamarks
+
+  const bookmarks = {
+    harbour: {
+      position: { x: 114.20, y: 22.223, z: 5000, spatialReference: 4326 },
+      heading: 345,
+      tilt: 60
+    },
+    taimoshan: {
+      position: { x: 114.17, y: 22.4, z: 5000, spatialReference: 4326 },
+      heading: 150,
+      tilt: 60
+    }
+  };
+
+  Object.keys(bookmarks).forEach(function(key) {
+    const elements = document.getElementsByClassName(key);
+
+    for (let i = 0; i < elements.length; i++) {
+      const el = elements[i];
+      el.addEventListener("click", function () {
+        const camera = bookmarks[key];
+        view.goTo(camera, {
+          duration: 2000
+        });
+      });
+    }
+  });
+
+
 });

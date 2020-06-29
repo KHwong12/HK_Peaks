@@ -20,7 +20,6 @@ body {
   width: 70%;
 }
 
-
 #viewDiv canvas {
   filter: drop-shadow(0px 0px 5px rgb(86, 72, 31));
 }
@@ -39,12 +38,14 @@ body {
   display: flex;
   flex-direction: row;
 }
+
 .geometry-button {
   flex: 1;
   border-style: solid;
   border-width: 1px;
   border-image: none;
 }
+
 .geometry-button-selected {
   background: #4c4c4c;
   color: #fff;
@@ -63,7 +64,6 @@ body {
 }
 
 /* https://glitch.com/edit/#!/zurich-contours?path=style.css%3A113%3A5 */
-
 #contentDiv {
   padding: 0;
   margin: 0;
@@ -75,77 +75,59 @@ body {
   min-width: 300px;
   width: 30%;
   height: 100%;
-  /* max-height: 100%; */
   background-color: #f4efe3ee;
   color: #56481f;
   padding: 2.5em;
   line-height: 1.8em;
   overflow-y: auto;
   box-sizing: border-box;
- }
- h1 {
+}
+
+h1 {
   padding: 1.5em 0 0.5em;
   margin: 0;
- }
+}
 
- .title {
-   cursor: pointer;
-   padding: 1.5em 0 0.5em;
-   margin: 0;
-   font-weight: bold;
- }
+.title {
+  cursor: pointer;
+  padding: 1.5em 0 0.5em;
+  margin: 0;
+  font-weight: bold;
+}
 
- .map-icon {
-   height: 20px;
-   vertical-align: middle;
- }
+.map-icon {
+  height: 20px;
+  vertical-align: middle;
+}
 
- .indicator {
-   cursor: pointer;
-   border-bottom: 1px dashed #56481f;
- }
+.indicator {
+  cursor: pointer;
+  border-bottom: 1px dashed #56481f;
+}
 
- .indicator:hover {
-   border-bottom: 1px solid #56481f;
- }
+.indicator:hover {
+  border-bottom: 1px solid #56481f;
+}
 
- footer {
-   font-size: 0.8em;
-   line-height: 1.3em;
-   border-top: 1px solid #56481f;
-   padding-top: 2em;
-   margin-top: 2em;
- }
+footer {
+  font-size: 0.8em;
+  line-height: 1.3em;
+  border-top: 1px solid #56481f;
+  padding-top: 2em;
+  margin-top: 2em;
+}
 
- footer>a {
-   text-decoration: none;
-   border-bottom: 1px dashed #56481f;
-   color: #56481f;
- }
+footer>a {
+  text-decoration: none;
+  border-bottom: 1px dashed #56481f;
+  color: #56481f;
+}
 
- footer>a:hover {
-   border-bottom: 1px solid #56481f;
- }
+footer>a:hover {
+  border-bottom: 1px solid #56481f;
+}
 
 /* esri widgets */
-
-/* Normal widget have background, yet transparent on top-left map widget */
-
-.esri-widget {
-  background-color: #f4efe3dd;
-}
-
-.esri-zoom,
-.esri-navigation-toggle {
-  background-color: transparent;
-}
-
-/* Normal Edit */
-
-.esri-widget--button {
-  background-color: #f4efe3;
-}
-
 .esri-ui-corner .esri-component {
   box-shadow: none;
 }
@@ -176,8 +158,27 @@ body {
   color: #56481f;
 }
 
-/* .button {
-  color: #f4efe3;
-  background-color: #f4efe3;
+
+/* top-left map control widgets and queryDiv */
+
+/* Normal widget have background, yet transparent on top-left map widget */
+.esri-widget {
+  background-color: #f4efe3dd;
+}
+
+.esri-zoom,
+.esri-navigation-toggle {
+  background-color: transparent;
+}
+
+/* Clear results button */
+.esri-button {
+  background-color: #56481f;
   border: 1px solid #56481f;
-} */
+}
+
+/* Slider */
+.esri-slider__thumb {
+  background-color: #f4efe3;
+  border: 2px solid #56481f;
+}

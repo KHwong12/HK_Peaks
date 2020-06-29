@@ -5,7 +5,7 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Peaks of Hong Kong</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/css/main.css">
 
@@ -21,15 +21,14 @@
 <body>
   <div id="viewDiv"></div>
   <div id="queryDiv" class="esri-widget">
-    <b>Settings</b><br />
-    <br />
+    <h3><b>Settings</b></h3>
     <div class="tooltip">
-      <label for="bufferNum">Visible Range (aka Buffer Distance):</label>
+      <label for="bufferNum">Visible Range</label>
       <div id="bufferNum"></div>
     </div>
     <br />
     <button class="esri-button" id="clearGeometry" type="button">
-      Clear
+      Clear Results
     </button>
   </div>
   <div id="contentDiv">
@@ -39,22 +38,45 @@
       This map shows the <span class="indicator home">hills around Zurich <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon"></span> in contour lines.
     </p> -->
     <p>
-      There are many hills in Hong Kong. Where (and what) could you see from the peak?
-      This application shows the peaks and hills in Hong Kong and where you could see from the peaks with given visible distance.
+      With numerous amount of hills and peaks in Hong Kong, have you ever investigated the visable area from the peaks?
+      This application shows the peaks and hills in Hong Kong. You could see where and how much you could see from the peaks with given visible distance.
+    </p>
+    <p>
+      <b>NOTE: This application is still in development.</b>
     </p>
     <h3>How to Use</h3>
-    <!-- <p class="title home">How to Use</p> -->
-    <ul>
+    <ol>
       <li>Drag and wander around the 3D scene and investigate the hills.</li>
-      <li>Click on the peaks (or any other places you like) to check the area visible (the white grids) from the peak.</li>
-      <li>Drag the slider to change the visibility from the peaks..</li>
-    </ul>
+      <li>Click on the peaks (or any other places you like). The application will compute the visible area/viewshed (the white grids) from the location you clicked.</li>
+      <li>Drag the slider to change the visibility from the peaks.</li>
+    </ol>
+    <h3>Example</h3>
+    <p>
+      Back to
+      <span class="indicator harbour">Victoria Harbour
+        <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon">
+      </span>
+    </p>
+    <p>
+      Go to
+      <span class="indicator taimoshan">Tai Mo Shan
+        <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon">
+      </span>
+      (TODO)
+    </p>
+    <p>
+      Go to
+      <span class="indicator sharppeak">Sharp Peak (蚺蛇尖)
+        <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon">
+      </span>
+      (TODO)
+    </p>
 
     <footer>
       Created by <a href="https://twitter.com/Kenneth_KHW" target="_blank">Kenneth Wong</a>.
       <br />
       Made with
-      <a href="https://pro.arcgis.com/en/pro-app/" target="_blank">ArcGIS Pro</a> and created the map with
+      <a href="https://pro.arcgis.com/en/pro-app/" target="_blank">ArcGIS Pro</a>. Web application developed using
       <a href="https://developers.arcgis.com/javascript/" target="_blank">ArcGIS API for JavaScript</a>.
     </footer>
   </div>
