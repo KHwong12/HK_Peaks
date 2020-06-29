@@ -54,7 +54,7 @@ require([
     map: map,
     camera: {
       // autocasts as new Camera()
-      position: [114.16, 22.24, 5000],
+      position: [114.175, 22.223, 5000],
       tilt: 60
     }
   });
@@ -104,7 +104,7 @@ require([
     labelingInfo: [{
     labelPlacement: "above-center",
     labelExpressionInfo: {
-      expression: "$feature.NAME"
+      expression: "$feature.NAME",
     },
     symbol: {
       type: "label-3d",

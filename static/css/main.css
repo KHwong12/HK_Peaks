@@ -12,8 +12,8 @@ body {
 }
 
 #viewDiv {
-  position: absolute;
-  float: left;
+  position: relative;
+  float: right;
   padding: 0;
   margin: 0;
   height: 100%;
@@ -68,7 +68,7 @@ body {
   padding: 0;
   margin: 0;
   position: relative;
-  float: right;
+  float: left;
   top: 0;
   bottom: 0;
   left: 0;
@@ -126,3 +126,58 @@ body {
  footer>a:hover {
    border-bottom: 1px solid #56481f;
  }
+
+/* esri widgets */
+
+/* Normal widget have background, yet transparent on top-left map widget */
+
+.esri-widget {
+  background-color: #f4efe3dd;
+}
+
+.esri-zoom,
+.esri-navigation-toggle {
+  background-color: transparent;
+}
+
+/* Normal Edit */
+
+.esri-widget--button {
+  background-color: #f4efe3;
+}
+
+.esri-ui-corner .esri-component {
+  box-shadow: none;
+}
+
+.esri-zoom .esri-widget--button:last-child {
+  border-top: 1px solid #56481f;
+}
+
+.esri-navigation-toggle:hover,
+.esri-navigation-toggle:focus {
+  background-color: transparent;
+}
+
+.esri-widget--button {
+  color: #56481f;
+  background-color: #f4efe3;
+  border: 1px solid #56481f;
+  border-radius: 50%;
+  margin-top: 3px;
+}
+
+.esri-widget--button:hover {
+  background-color: #c9c1ae;
+  color: #56481f;
+}
+
+.esri-attribution__sources[role="button"] {
+  color: #56481f;
+}
+
+/* .button {
+  color: #f4efe3;
+  background-color: #f4efe3;
+  border: 1px solid #56481f;
+} */
