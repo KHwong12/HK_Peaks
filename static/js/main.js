@@ -71,6 +71,7 @@ require([
   const popupTemplate = {
     // autocasts as new PopupTemplate()
     title: "{NAME}",
+    lastEditInfoEnabled: true,
     content: [
       {
         type: "fields",
@@ -99,7 +100,41 @@ require([
 
   var peaks = new FeatureLayer({
     url: "https://services5.arcgis.com/xH8UmTNerx1qYfXM/arcgis/rest/services/peak_3D/FeatureServer/0",
-    popupTemplate: popupTemplate
+    popupTemplate: popupTemplate,
+    labelingInfo: [{
+    labelPlacement: "above-center",
+    labelExpressionInfo: {
+      expression: "$feature.NAME"
+    },
+    symbol: {
+      type: "label-3d",
+      symbolLayers: [{
+        type: "text",
+        material: {
+          color: [86, 72, 31]
+        },
+        halo: {
+          color: [244, 239, 227, 0.6],
+          size: "3px"
+        },
+        font: {
+          weight: "bold"
+        },
+        size: 10
+      }],
+      verticalOffset: {
+        screenLength: 50,
+        maxWorldLength: 500,
+        minWorldLength: 20
+      },
+      callout: {
+        type: "line",
+        size: "2px",
+        color: [86, 72, 31]
+      }
+    }
+  }]
+
   });
 
   map.add(peaks);
@@ -165,6 +200,7 @@ require([
   // Clear the geometry and set the default renderer
   function clearGeometry() {
     graphicsLayer.removeAll();
+
   }
 
 
