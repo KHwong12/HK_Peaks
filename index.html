@@ -21,7 +21,7 @@
 <body>
   <div id="viewDiv"></div>
   <div id="queryDiv" class="esri-widget">
-    <h3><b>Settings</b></h3>
+    <h3>Settings</h3>
     <div class="tooltip">
       <label for="bufferNum">Visible Range</label>
       <div id="bufferNum"></div>
@@ -34,28 +34,30 @@
   <div id="contentDiv">
     <h1>Peaks in Hong Kong</h1>
     <h2>Where and How Much Can You See?</h2>
-    <!-- <p>Switzerland's mountains are amazing. However, its "hills" are pretty awesome too.
-      This map shows the <span class="indicator home">hills around Zurich <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon"></span> in contour lines.
-    </p> -->
-    <p>
-      With numerous amount of hills and peaks in Hong Kong, have you ever investigated the visable area from the peaks?
-      This application shows the peaks and hills in Hong Kong. You could see where and how much you could see from the peaks with given visible distance.
-    </p>
     <p>
       <b>NOTE: This application is still in development.</b>
     </p>
+    <p>
+      With numerous amount of hills and peaks in Hong Kong, have you ever investigated the visable area from the peaks?
+      This application allows you to view and check where and how much you could see from the peaks with given visible distance.
+    </p>
+    <p>
+      In this 3d map, the peaks are all labelled with their Chinese and English name, as well as peak elevation.
+    </p>
     <h3>How to Use</h3>
     <ol>
-      <li>Drag and wander around the 3D scene and investigate the hills.</li>
-      <li>Click on the peaks (or any other places you like). The application will compute the visible area/viewshed (the white grids) from the location you clicked.</li>
+      <li>Drag and wander around the 3D scene and investigate the topography of Hong Kong.</li>
+      <li>Click on the peaks (or any other places you like). The application will compute the visible area (in jargon, viewshed) from that point.</li>
+      <li>The white grids appears on the map shows the area visible from the point.</li>
       <li>Drag the slider to change the visibility from the peaks.</li>
     </ol>
-    <h3>Example</h3>
+    <h3>Spots</h3>
     <p>
       Back to
       <span class="indicator harbour">Victoria Harbour
         <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon">
       </span>
+      (initial view)
     </p>
     <p>
       Go to
@@ -75,8 +77,10 @@
     <footer>
       Created by <a href="https://twitter.com/Kenneth_KHW" target="_blank">Kenneth Wong</a>.
       <br />
-      Made with
-      <a href="https://pro.arcgis.com/en/pro-app/" target="_blank">ArcGIS Pro</a>. Web application developed using
+      Last modified on <span id="lastModified"></span>.
+      <br />
+      Made and developed with
+      <a href="https://pro.arcgis.com/en/pro-app/" target="_blank">ArcGIS Pro</a> and
       <a href="https://developers.arcgis.com/javascript/" target="_blank">ArcGIS API for JavaScript</a>.
     </footer>
   </div>
