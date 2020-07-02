@@ -23,6 +23,7 @@
 
   <!-- app's own JavaScript -->
   <script src="static/js/main.js"></script>
+  <script src="static/js/misc.js"></script>
 </head>
 
 <body>
@@ -58,6 +59,10 @@
       <li>The white grids appears on the map shows the area visible from the point.</li>
       <li>Drag the slider to change the visibility from the peaks.</li>
     </ol>
+    <h3>Current Visibility</h3>
+    <p>
+      Current visibility in Central is <span id="centralVis"></span>.
+    </p>
     <h3>Spots</h3>
     <p>
       Back to
@@ -85,6 +90,8 @@
       Created by <a href="https://twitter.com/Kenneth_KHW" target="_blank">Kenneth Wong</a>.
       <br />
       Last modified on <span id="lastModified"></span>.
+      <br />
+      This application is for coding practice and testing demonstration only. The accuracy of the data and results are not guaranteed.
       <br />
       Made and developed with
       <a href="https://pro.arcgis.com/en/pro-app/" target="_blank">ArcGIS Pro</a> and

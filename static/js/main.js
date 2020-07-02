@@ -16,6 +16,7 @@ require([
   "esri/core/promiseUtils",
 
   "esri/WebScene",
+  "esri/symbols/PointSymbol3D"
 ], function(
   Map,
   SceneView,
@@ -33,7 +34,8 @@ require([
   geometryEngine,
   promiseUtils,
 
-  WebScene
+  WebScene,
+  PointSymbol3D
 
 ) {
 
@@ -112,61 +114,58 @@ require([
     }]
   };
 
+  const peakNameLabel = [{
+    labelPlacement: "above-center",
+    // https://community.esri.com/thread/187776-arcade-text-constant-for-textformattingnewline-is-adding-space-instead-of-new-line
+    labelExpressionInfo: {
+      expression: "$feature.NAME + TextFormatting.NewLine + $feature.ELE + 'm'"
+    },
+    symbol: {
+      type: "label-3d",
+      symbolLayers: [{
+        type: "text",
+        material: {
+          color: [86, 72, 31]
+        },
+        halo: {
+          color: [244, 239, 227, 0.6],
+          size: "3px"
+        },
+        font: {
+          weight: "bold"
+        },
+        size: 10
+      }],
+      verticalOffset: {
+        screenLength: 50,
+        maxWorldLength: 500,
+        minWorldLength: 20
+      },
+      callout: {
+        type: "line",
+        size: "2px",
+        color: [86, 72, 31]
+      }
+    }
+  }];
 
   var peaks = new FeatureLayer({
     url: "https://services5.arcgis.com/xH8UmTNerx1qYfXM/arcgis/rest/services/peak_3D/FeatureServer/0",
     popupTemplate: peakPopupTemplate,
-    renderer: {
-    type: "simple",
     symbol: {
       type: "point-3d",
       symbolLayers: [{
-        type: "icon",
-        resource: {
-          primitive: "tetrahedron"
-        },
+        type: "object",
+        width: 5,  // diameter of the object from east to west in meters
+        height: 20,  // height of the object in meters
+        depth: 15,  // diameter of the object from north to south in meters
+        resource: {primitive: "tetrahedron"},
         material: {
           color: [86, 72, 31]
-        },
-        size: "20px"
-      }]
-    }
-  },
-    labelingInfo: [{
-      labelPlacement: "above-center",
-      // https://community.esri.com/thread/187776-arcade-text-constant-for-textformattingnewline-is-adding-space-instead-of-new-line
-      labelExpressionInfo: {
-        expression: "$feature.NAME + TextFormatting.NewLine + $feature.ELE + 'm'"
-      },
-      symbol: {
-        type: "label-3d",
-        symbolLayers: [{
-          type: "text",
-          material: {
-            color: [86, 72, 31]
-          },
-          halo: {
-            color: [244, 239, 227, 0.6],
-            size: "3px"
-          },
-          font: {
-            weight: "bold"
-          },
-          size: 10
-        }],
-        verticalOffset: {
-          screenLength: 50,
-          maxWorldLength: 500,
-          minWorldLength: 20
-        },
-        callout: {
-          type: "line",
-          size: "2px",
-          color: [86, 72, 31]
         }
-      }
-    }]
-
+      }]
+    },
+    labelingInfo: peakNameLabel
   });
 
   map.add(peaks);
@@ -371,8 +370,13 @@ require([
       tilt: 60
     },
     taimoshan: {
-      position: { x: 114.17, y: 22.4, z: 5000, spatialReference: 4326 },
-      heading: 150,
+      position: { x: 114.137, y: 22.396, z: 2000, spatialReference: 4326 },
+      heading: 140,
+      tilt: 60
+    },
+    sharppeak: {
+      position: { x: 114.384, y: 22.430, z: 2000, spatialReference: 4326 },
+      heading: 250,
       tilt: 60
     }
   };
@@ -390,9 +394,5 @@ require([
       });
     }
   });
-
-
-  document.getElementById("lastModified").innerHTML = document.lastModified;
-
 
 });
