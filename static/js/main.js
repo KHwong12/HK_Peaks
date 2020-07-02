@@ -13,7 +13,9 @@ require([
   "esri/widgets/Sketch/SketchViewModel",
   "esri/widgets/Slider",
   "esri/geometry/geometryEngine",
-  "esri/core/promiseUtils"
+  "esri/core/promiseUtils",
+
+  "esri/WebScene",
 ], function(
   Map,
   SceneView,
@@ -29,7 +31,9 @@ require([
   SketchViewModel,
   Slider,
   geometryEngine,
-  promiseUtils
+  promiseUtils,
+
+  WebScene
 
 ) {
 
@@ -37,13 +41,12 @@ require([
   var gpUrl = "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Elevation/ESRI_Elevation_World/GPServer/Viewshed";
 
   var map = new Map({
-    basemap: "satellite",
-    ground: "world-elevation"
+    basemap: "satellite"
   });
 
+  // Custom elevation service
   // https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-ElevationLayer.html
   var elevLyr = new ElevationLayer({
-    // Custom elevation service
     url: "https://tiles.arcgis.com/tiles/6j1KwZfY2fZrfNMR/arcgis/rest/services/HK_DTM/ImageServer"
   });
   // Add elevation layer to the map's ground.
@@ -60,6 +63,20 @@ require([
     }
   });
 
+  // Alternative: use WebScene created from AGOL
+  // var scene = new WebScene({
+  // portalItem: { // autocasts as new PortalItem()
+  //     id: "ac347cb076674541810660a8d22763ea"  // ID of the WebScene on arcgis.com
+  //   }
+  // });
+  //
+  // var map = new SceneView({
+  //   map: scene,  // The WebScene instance created above
+  //   container: "viewDiv"
+  // });
+  //
+  // map.when(function() {});
+
   var graphicsLayer = new GraphicsLayer();
   map.add(graphicsLayer);
 
@@ -69,7 +86,7 @@ require([
 
   // Create the PopupTemplate
   // https://developers.arcgis.com/javascript/latest/sample-code/featurelayerview-query/index.html
-  const popupTemplate = {
+  const peakPopupTemplate = {
     // autocasts as new PopupTemplate()
     title: "{NAME}",
     lastEditInfoEnabled: true,
@@ -98,7 +115,23 @@ require([
 
   var peaks = new FeatureLayer({
     url: "https://services5.arcgis.com/xH8UmTNerx1qYfXM/arcgis/rest/services/peak_3D/FeatureServer/0",
-    popupTemplate: popupTemplate,
+    popupTemplate: peakPopupTemplate,
+    renderer: {
+    type: "simple",
+    symbol: {
+      type: "point-3d",
+      symbolLayers: [{
+        type: "icon",
+        resource: {
+          primitive: "tetrahedron"
+        },
+        material: {
+          color: [86, 72, 31]
+        },
+        size: "20px"
+      }]
+    }
+  },
     labelingInfo: [{
       labelPlacement: "above-center",
       // https://community.esri.com/thread/187776-arcade-text-constant-for-textformattingnewline-is-adding-space-instead-of-new-line
@@ -192,6 +225,7 @@ require([
   function bufferVariablesChanged(event) {
     bufferSize = event.value;
   }
+
   // Clear the geometry and set the default renderer
   document
     .getElementById("clearGeometry")
@@ -200,7 +234,6 @@ require([
   // Clear the geometry and set the default renderer
   function clearGeometry() {
     graphicsLayer.removeAll();
-
   }
 
 
@@ -357,6 +390,7 @@ require([
       });
     }
   });
+
 
   document.getElementById("lastModified").innerHTML = document.lastModified;
 
