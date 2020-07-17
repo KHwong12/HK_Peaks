@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
       }
 
-      var dvTable = document.getElementById("visibility");
+      var dvTable = document.getElementById("visibilityDiv");
       dvTable.innerHTML = "";
       dvTable.appendChild(table);
     }

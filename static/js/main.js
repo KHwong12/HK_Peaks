@@ -362,9 +362,9 @@ require([
       tilt: 60
     },
     taimoshan: {
-      position: { x: 114.11, y: 22.45, z: 4000, spatialReference: 4326 },
+      position: { x: 114.11, y: 22.43, z: 3000, spatialReference: 4326 },
       heading: 140,
-      tilt: 60
+      tilt: 75
     },
     sharppeak: {
       position: { x: 114.384, y: 22.430, z: 2000, spatialReference: 4326 },
