@@ -13,7 +13,6 @@ body {
 
 /* Bootstrap style table */
 /* cannot directly load booystrap css since will crash the slider */
-
 .table {
   width: 100%;
   max-width: 100%;
@@ -33,7 +32,7 @@ body {
   border-bottom: 1px solid #dee2e6;
 }
 
-.table tbody + tbody {
+.table tbody+tbody {
   border-top: 1px solid #dee2e6;
 }
 
@@ -59,7 +58,6 @@ body {
 .table-bordered thead td {
   border-bottom-width: 2px;
 }
-
 
 #viewDiv {
   position: relative;
@@ -208,9 +206,7 @@ footer {
   color: #56481f;
 }
 
-
 /* top-left map control widgets and queryDiv */
-
 /* Normal widget have background, yet transparent on top-left map widget */
 .esri-widget {
   background-color: #f4efe3dd;

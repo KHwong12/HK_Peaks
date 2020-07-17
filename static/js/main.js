@@ -156,10 +156,12 @@ require([
       type: "point-3d",
       symbolLayers: [{
         type: "object",
-        width: 5,  // diameter of the object from east to west in meters
-        height: 20,  // height of the object in meters
-        depth: 15,  // diameter of the object from north to south in meters
-        resource: {primitive: "tetrahedron"},
+        width: 5, // diameter of the object from east to west in meters
+        height: 20, // height of the object in meters
+        depth: 15, // diameter of the object from north to south in meters
+        resource: {
+          primitive: "tetrahedron"
+        },
         material: {
           color: [86, 72, 31]
         }
@@ -360,27 +362,52 @@ require([
 
   const bookmarks = {
     harbour: {
-      position: { x: 114.20, y: 22.223, z: 5000, spatialReference: 4326 },
+      position: {
+        x: 114.20,
+        y: 22.223,
+        z: 5000,
+        spatialReference: 4326
+      },
       heading: 345,
       tilt: 60
     },
     victoriapeak: {
-      position: { x: 114.138, y: 22.26, z: 1500, spatialReference: 4326 },
+      position: {
+        x: 114.138,
+        y: 22.26,
+        z: 1500,
+        spatialReference: 4326
+      },
       heading: 20,
       tilt: 70
     },
     taimoshan: {
-      position: { x: 114.09, y: 22.44, z: 3000, spatialReference: 4326 },
+      position: {
+        x: 114.09,
+        y: 22.44,
+        z: 3000,
+        spatialReference: 4326
+      },
       heading: 140,
       tilt: 75
     },
     sharppeak: {
-      position: { x: 114.429, y: 22.44, z: 3000, spatialReference: 4326 },
+      position: {
+        x: 114.429,
+        y: 22.44,
+        z: 3000,
+        spatialReference: 4326
+      },
       heading: 250,
       tilt: 60
     },
     kowloonpeak: {
-      position: { x: 114.253, y: 22.356, z: 3000, spatialReference: 4326 },
+      position: {
+        x: 114.253,
+        y: 22.356,
+        z: 3000,
+        spatialReference: 4326
+      },
       heading: 260,
       tilt: 60
     }
@@ -391,7 +418,7 @@ require([
 
     for (let i = 0; i < elements.length; i++) {
       const el = elements[i];
-      el.addEventListener("click", function () {
+      el.addEventListener("click", function() {
         const camera = bookmarks[key];
         view.goTo(camera, {
           duration: 2000
