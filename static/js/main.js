@@ -59,9 +59,9 @@ require([
     map: map,
     camera: {
       // autocasts as new Camera()
-      position: [114.175, 22.223, 5000],
+      position: [114.20, 22.223, 5000],
       tilt: 60,
-      heading: 15
+      heading: 345
     }
   });
 
@@ -355,20 +355,33 @@ require([
    Bookmarks
   ********************/
 
+  // About xyz, heading and tilt
+  // https://developers.google.com/maps/documentation/android-sdk/views
+
   const bookmarks = {
     harbour: {
       position: { x: 114.20, y: 22.223, z: 5000, spatialReference: 4326 },
       heading: 345,
       tilt: 60
     },
+    victoriapeak: {
+      position: { x: 114.138, y: 22.26, z: 1500, spatialReference: 4326 },
+      heading: 20,
+      tilt: 70
+    },
     taimoshan: {
-      position: { x: 114.11, y: 22.43, z: 3000, spatialReference: 4326 },
+      position: { x: 114.09, y: 22.44, z: 3000, spatialReference: 4326 },
       heading: 140,
       tilt: 75
     },
     sharppeak: {
-      position: { x: 114.384, y: 22.430, z: 2000, spatialReference: 4326 },
+      position: { x: 114.429, y: 22.44, z: 3000, spatialReference: 4326 },
       heading: 250,
+      tilt: 60
+    },
+    kowloonpeak: {
+      position: { x: 114.253, y: 22.356, z: 3000, spatialReference: 4326 },
+      heading: 260,
       tilt: 60
     }
   };

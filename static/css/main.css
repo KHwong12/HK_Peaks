@@ -11,6 +11,56 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+/* Bootstrap style table */
+/* cannot directly load booystrap css since will crash the slider */
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  color: #56481f;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 1px solid #dee2e6;
+}
+
+.table .table {
+  background-color: #fff;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0.3rem;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+
 #viewDiv {
   position: relative;
   float: right;
@@ -78,14 +128,14 @@ body {
   background-color: #f4efe3ee;
   color: #56481f;
   padding: 2.5em;
-  line-height: 1.5em;
+  line-height: 1.5;
   overflow-y: auto;
   box-sizing: border-box;
 }
 
 h1 {
   padding: 1.5em 0 0.5em;
-  margin: 0;
+  margin: 1;
 }
 
 .title {
@@ -109,22 +159,22 @@ h1 {
   border-bottom: 1px solid #56481f;
 }
 
+a {
+  text-decoration: none;
+  border-bottom: 1px dashed #56481f;
+  color: #56481f;
+}
+
+a:hover {
+  border-bottom: 1px solid #56481f;
+}
+
 footer {
   font-size: 0.8em;
   line-height: 1.3em;
   border-top: 1px solid #56481f;
   padding-top: 2em;
   margin-top: 2em;
-}
-
-footer>a {
-  text-decoration: none;
-  border-bottom: 1px dashed #56481f;
-  color: #56481f;
-}
-
-footer>a:hover {
-  border-bottom: 1px solid #56481f;
 }
 
 /* esri widgets */

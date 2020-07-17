@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   const weatherAPI = "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=LTMV&lang=en&rformat=json";
 
+  // Alternative: use fetch()
+
   // http://zetcode.com/javascript/jsonurl/
   // fetch(weatherAPI)
   //   .then(res => res.json())

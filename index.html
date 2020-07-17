@@ -5,17 +5,16 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="description" content="Check the visable area of peaks in Hong Kong">
+  <meta name="description" content="Identify the visable area from peaks in Hong Kong">
 
   <!-- Google / Search Engine Tags -->
   <meta itemprop="name" content="Peaks of Hong Kong">
-  <meta itemprop="description" content="Check the visable area of peaks in Hong Kong">
+  <meta itemprop="description" content="Identify the visable area from peaks in Hong Kong">
   <meta itemprop="image" content="">
 
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/css/main.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
   <!-- app's own css -->
   <link rel="stylesheet" href="static/css/main.css">
@@ -32,7 +31,7 @@
   <div id="queryDiv" class="esri-widget">
     <h3>Settings</h3>
     <div class="tooltip">
-      <label for="bufferNum">Visible Range</label>
+      <label for="bufferNum">Visibility</label>
       <div id="bufferNum"></div>
     </div>
     <br />
@@ -41,8 +40,7 @@
     </button>
   </div>
   <div id="contentDiv">
-    <h1>Peaks in Hong Kong</h1>
-    <h2>Where and How Much Can You See?</h2>
+    <h1>Peaks in Hong Kong - Where and How Much Can You See?</h1>
     <p>
       <b>NOTE: This application is still in development.</b>
     </p>
@@ -51,42 +49,48 @@
       This application allows you to view and check where and how much you could see from the peaks with given visible distance.
     </p>
     <p>
-      In this 3d map, the peaks are all labelled with their Chinese and English name, as well as peak elevation.
+      In this 3d map, the peaks are labelled with their Chinese and English names, as well as elevation.
     </p>
     <h3>How to Use</h3>
     <ol>
-      <li>Drag and wander around the 3D scene and investigate the topography of Hong Kong.</li>
-      <li>Click on the peaks (or any other places you like). The application will compute the visible area (in jargon, viewshed) from that point.</li>
-      <li>The white grids appears on the map shows the area visible from the centre.</li>
+      <li>Drag and wander around the 3D map and investigate the topography.</li>
+      <li>Click on the peaks (or any other places you like). A red pin will appear on the place you clicked.</li>
+      <li>The application will then compute the visible area (<i>viewshed</i> in jargon) from that point. The white grids appears on the map shows the area visible from the centre.</li>
       <li>Drag the slider to set your desired visibility (1-20km) to simulate how far you can see from the centre.</li>
     </ol>
     <h3>Current Visibility</h3>
     <p>
-      Current visibility data are provided by <a href="https://www.hko.gov.hk/en/wxinfo/ts/display_element_vis.htm">Hong Kong Observatory</a>.
+      Current visibility data are provided by <a target="_blank" href="https://www.hko.gov.hk/en/wxinfo/ts/display_element_vis.htm">Hong Kong Observatory</a>.
     </p>
     <div id="visibilityDiv"></div>
     <h3>Spots</h3>
     <p>
-      Back to
-      <span class="indicator harbour">Victoria Harbour
-        <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon">
-      </span>
-      (initial view)
+      No idea where to start? Take a glance at the following scenes.
+      <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon">
     </p>
-    <p>
-      Go to
-      <span class="indicator taimoshan">Tai Mo Shan
-        <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon">
-      </span>
-      (TODO)
-    </p>
-    <p>
-      Go to
-      <span class="indicator sharppeak">Sharp Peak (蚺蛇尖)
-        <img src="https://cdn.glitch.com/20272750-7169-4cf2-ad09-ccca0884dbf8%2Fmap.png?1564488208311" class="map-icon">
-      </span>
-      (TODO)
-    </p>
+    <ul>
+      <li>
+        <span class="indicator harbour">Victoria Harbour
+        </span>
+        (initial view)
+      </li>
+      <li>
+        <span class="indicator victoriapeak">Victoria Peak
+        </span>
+      </li>
+      <li>
+        <span class="indicator kowloonpeak">Eight Mountains of Kowloon (九龍群山)
+        </span>
+      </li>
+      <li>
+        <span class="indicator taimoshan">Tai Mo Shan
+        </span>
+      </li>
+      <li>
+        <span class="indicator sharppeak">Sharp Peak (蚺蛇尖)
+        </span>
+      </li>
+    </ul>
 
     <footer>
       Created by <a href="https://twitter.com/Kenneth_KHW" target="_blank">Kenneth Wong</a>.
