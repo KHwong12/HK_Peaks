@@ -15,6 +15,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/css/main.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 
   <!-- app's own css -->
   <link rel="stylesheet" href="static/css/main.css">
@@ -23,7 +25,7 @@
 
   <!-- app's own JavaScript -->
   <script src="static/js/main.js"></script>
-  <script src="static/js/misc.js"></script>
+  <script src="static/js/visibility.js"></script>
 </head>
 
 <body>
@@ -56,13 +58,14 @@
     <ol>
       <li>Drag and wander around the 3D scene and investigate the topography of Hong Kong.</li>
       <li>Click on the peaks (or any other places you like). The application will compute the visible area (in jargon, viewshed) from that point.</li>
-      <li>The white grids appears on the map shows the area visible from the point.</li>
-      <li>Drag the slider to change the visibility from the peaks.</li>
+      <li>The white grids appears on the map shows the area visible from the centre.</li>
+      <li>Drag the slider to set your desired visibility (1-20km) to simulate how far you can see from the centre.</li>
     </ol>
     <h3>Current Visibility</h3>
     <p>
-      Current visibility in Central is <span id="centralVis"></span>.
+      Current visibility data are provided by <a href="https://www.hko.gov.hk/en/wxinfo/ts/display_element_vis.htm">Hong Kong Observatory</a>.
     </p>
+    <div id="visibility"></div>
     <h3>Spots</h3>
     <p>
       Back to
@@ -91,7 +94,7 @@
       <br />
       Last modified on <span id="lastModified"></span>.
       <br />
-      This application is for coding practice and testing demonstration only. The accuracy of the data and results are not guaranteed.
+      This application is for coding practice and testing demonstration only. Accuracy of data and results are not guaranteed.
       <br />
       Made and developed with
       <a href="https://pro.arcgis.com/en/pro-app/" target="_blank">ArcGIS Pro</a> and

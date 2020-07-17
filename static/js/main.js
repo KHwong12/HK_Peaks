@@ -187,16 +187,6 @@ require([
 
   view.ui.add([queryDiv], "bottom-left");
 
-  // draw geometry buttons - use the selected geometry to sktech
-  // document
-  //   .getElementById("point-geometry-button")
-  //   .addEventListener("click", geometryButtonsClickHandler);
-  // function geometryButtonsClickHandler(event) {
-  //   const geometryType = event.target.value;
-  //   clearGeometry();
-  //   sketchViewModel.create(geometryType);
-  // }
-
   const bufferNumSlider = new Slider({
     container: "bufferNum",
     min: 1,
@@ -361,7 +351,9 @@ require([
       });
   }
 
-  // Bookamarks
+  /********************
+   Bookmarks
+  ********************/
 
   const bookmarks = {
     harbour: {
@@ -370,7 +362,7 @@ require([
       tilt: 60
     },
     taimoshan: {
-      position: { x: 114.137, y: 22.396, z: 2000, spatialReference: 4326 },
+      position: { x: 114.11, y: 22.45, z: 4000, spatialReference: 4326 },
       heading: 140,
       tilt: 60
     },
