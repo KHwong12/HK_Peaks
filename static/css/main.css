@@ -59,13 +59,24 @@ body {
   border-bottom-width: 2px;
 }
 
+@media (max-width: 767px) {
+  #viewDiv {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  #viewDiv {
+    width: 70%;
+  }
+}
+
 #viewDiv {
   position: relative;
   float: right;
   padding: 0;
   margin: 0;
   height: 100%;
-  width: 70%;
 }
 
 #viewDiv canvas {
@@ -111,7 +122,16 @@ body {
   display: inline-block;
 }
 
+/* Hide content div for phones */
+/* https://stackoverflow.com/questions/4296012/hide-div-if-screen-is-smaller-than-a-certain-width */
+@media (max-width: 767px) {
+    #contentDiv {
+        display: none !important;
+    }
+}
+
 /* https://glitch.com/edit/#!/zurich-contours?path=style.css%3A113%3A5 */
+
 #contentDiv {
   padding: 0;
   margin: 0;
@@ -120,7 +140,8 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  min-width: 300px;
+  /* min-width: 300px;   */
+  min-width: auto;
   width: 30%;
   height: 100%;
   background-color: #f4efe3ee;
