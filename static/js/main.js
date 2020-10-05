@@ -318,7 +318,18 @@ require([
       Viewshed_Distance: vsDistance
     };
 
-    gp.execute(params).then(drawResultData);
+    // .execute(params) means sending JSON request to ArcGIS to excute Viewshed tasks
+    // .then(drawResultData) is the function below
+    // However, the function provided by ESRI will not throw error, need manually catch error
+    // The viewshed function sometimes malfunction for unknown reason.
+    // could pass or fail even with identical params at different testing time
+
+    gp.execute(params)
+    .then(drawResultData)
+    .catch(function(error) {
+      window.alert("The viewshed tool is temporary not functioning. Please try later.");
+      console.error(error);
+    });
   }
 
   function drawResultData(result) {
