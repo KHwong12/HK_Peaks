@@ -1,5 +1,21 @@
 # Peaks of Hong Kong
 
+**UPDATE ON JUL 2021**: I am rewriting this web map application. The new version of this app is now in the following link.
+
+<p align="center">
+  <a href="https://github.com/KHwong12/viewshed-peaks">
+    https://github.com/KHwong12/viewshed-peaks
+  </a>
+</p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 [CHECK THE WEB APPLICATION](https://khwong12.github.io/HK_Peaks/)
 
 A web map application for investigating area visible from the peaks of Hong Kong
